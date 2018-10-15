@@ -1,0 +1,10 @@
+.main-conrainer {
+  border: 2px solid green;
+  border-radius: 10px;
+}
+
+.editor-container {
+  padding: 7px;
+  border: 2px solid green;
+  border-radius: 5px;
+}

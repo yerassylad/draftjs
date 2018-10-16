@@ -1,9 +1,5 @@
-.main-conrainer {
-  border: 2px solid green;
-  border-radius: 10px;
-}
-
 .editor-container {
+  margin: 10px 0;
   padding: 7px;
   border: 2px solid green;
   border-radius: 5px;

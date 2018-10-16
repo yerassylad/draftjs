@@ -47,6 +47,7 @@ const LineDecoratonBtns = props => {
   );
 };
 
+// Рендеринг кнопок для блочных декораций
 const BlockDecorationBtns = props => {
   return (
     <div>
@@ -62,6 +63,14 @@ const BlockDecorationBtns = props => {
   );
 };
 
+function myBlockStyleFn(contentBlock) {
+  const type = contentBlock.getType();
+  if (type === "blockquote") {
+    return "superFancyBlockquote";
+  }
+}
+
+// Сам текстовый редактор
 class TextEditor extends Component {
   // ----------------------------------------------- TODO требуется переписать состояние компонента с использованием redux
   constructor(props) {
@@ -95,6 +104,7 @@ class TextEditor extends Component {
             onChange={this.onChange}
             placeholder="Введите текст"
             ref="Текстовый редактор"
+            blockStyleFn={myBlockStyleFn}
           />
         </div>
       </div>

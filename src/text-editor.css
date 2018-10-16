@@ -4,3 +4,10 @@
   border: 2px solid green;
   border-radius: 5px;
 }
+
+.superFancyBlockquote {
+  color: #999;
+  font-family: "Hoefler Text", Georgia, serif;
+  font-style: italic;
+  text-align: center;
+}

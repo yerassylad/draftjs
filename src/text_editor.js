@@ -6,6 +6,9 @@ import "./text-editor.css";
 const StyleMap = {
   STRIKE: {
     textDecoration: "line-through"
+  },
+  INDENT: {
+    textIndent: "50px"
   }
 };
 
@@ -20,7 +23,8 @@ const INLINE_STYLES = [
 // Виды блочных стилей
 const BLOCK_STYLES = [
   { label: "UL", style: "unordered-list-item" },
-  { label: "OL", style: "ordered-list-item" }
+  { label: "OL", style: "ordered-list-item" },
+  { label: "Indent", style: "INDENT" }
 ];
 
 // Кнопка с функцией
@@ -63,12 +67,12 @@ const BlockDecorationBtns = props => {
   );
 };
 
-function myBlockStyleFn(contentBlock) {
-  const type = contentBlock.getType();
-  if (type === "blockquote") {
-    return "superFancyBlockquote";
-  }
-}
+// function myBlockStyleFn(contentBlock) {
+//   const type = contentBlock.getType();
+//   if (type === "blockquote") {
+//     return "superFancyBlockquote";
+//   }
+// }
 
 // Сам текстовый редактор
 class TextEditor extends Component {
@@ -92,11 +96,21 @@ class TextEditor extends Component {
     this.onChange(RichUtils.toggleBlockType(this.state.editorState, blockType));
   }
 
+  onUndoClick() {
+    this.onChange(EditorState.undo(this.state.editorState));
+  }
+
+  onRedoClick() {
+    this.onChange(EditorState.redo(this.state.editorState));
+  }
+
   render() {
     return (
       <div>
         <LineDecoratonBtns onToggle={this.toggleInlineStyle} />
         <BlockDecorationBtns onToggle={this.toggleBlockType} />
+        <button onClick={this.onUndoClick.bind(this)}>Undo</button>
+        <button onClick={this.onRedoClick.bind(this)}>Redo</button>
         <div className="editor-container">
           <Editor
             customStyleMap={StyleMap}
@@ -104,7 +118,7 @@ class TextEditor extends Component {
             onChange={this.onChange}
             placeholder="Введите текст"
             ref="Текстовый редактор"
-            blockStyleFn={myBlockStyleFn}
+            // blockStyleFn={myBlockStyleFn}
           />
         </div>
       </div>

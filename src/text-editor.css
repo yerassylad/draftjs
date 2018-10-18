@@ -6,7 +6,7 @@
 }
 
 .textIndentation {
-  text-indent: 15%;
+  text-indent: 3%;
 }
 
 .textAlignLeft {
@@ -23,4 +23,16 @@
 
 .textAlignJustify {
   text-align: justify;
+}
+
+.smallFont {
+  font-size: xx-small;
+}
+
+.normalFont {
+  font-size: medium;
+}
+
+.hugeFont {
+  font-size: xx-large;
 }

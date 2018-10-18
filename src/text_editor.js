@@ -25,7 +25,10 @@ const BLOCK_STYLES = [
   { label: "aLeft", style: "a-left" },
   { label: "aCenter", style: "a-center" },
   { label: "aRight", style: "a-right" },
-  { label: "aJust", style: "a-just" }
+  { label: "aJust", style: "a-just" },
+  { label: "Huge", style: "huge" },
+  { label: "Normal", style: "normal" },
+  { label: "Small", style: "small" }
 ];
 
 // Кнопка с функцией
@@ -81,6 +84,14 @@ function myBlockStyleFn(contentBlock) {
       return "textAlignRight";
     case "a-just":
       return "textAlignJustify";
+    case "huge":
+      return "hugeFont";
+    case "normal":
+      return "normalFont";
+    case "small":
+      return "smallFont";
+    default:
+      return;
   }
 }
 

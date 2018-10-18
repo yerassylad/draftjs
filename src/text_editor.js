@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Editor, EditorState, RichUtils, convertToRaw } from "draft-js";
+import { Editor, EditorState, RichUtils } from "draft-js";
 import "./text-editor.css";
 
 // в darftjs имплементированы BOLD ITALIC UNDERLINE стили. Создаем кастомный стиль для зачеркнутых слов
@@ -143,7 +143,12 @@ class TextEditor extends Component {
   // ----------------------------------------------- TODO требуется переписать состояние компонента с использованием redux
   constructor(props) {
     super(props);
-    this.state = { editorState: EditorState.createEmpty() };
+    this.state = {
+      editorState: EditorState.createEmpty(),
+      showURLInput: false,
+      url: "",
+      urlType: ""
+    };
     this.focus = () => this.refs.focus();
     this.onChange = editorState => this.setState({ editorState });
     this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
@@ -185,9 +190,6 @@ class TextEditor extends Component {
             blockStyleFn={myBlockStyleFn}
           />
         </div>
-        {JSON.stringify(
-          convertToRaw(this.state.editorState.getCurrentContent())
-        )}
       </div>
     );
   }

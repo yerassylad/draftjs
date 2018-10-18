@@ -24,15 +24,3 @@
 .textAlignJustify {
   text-align: justify;
 }
-
-.smallFont {
-  font-size: xx-small;
-}
-
-.normalFont {
-  font-size: medium;
-}
-
-.hugeFont {
-  font-size: xx-large;
-}

@@ -6,6 +6,45 @@ import "./text-editor.css";
 const StyleMap = {
   STRIKE: {
     textDecoration: "line-through"
+  },
+  Huge: {
+    fontSize: "xx-large"
+  },
+  Normal: {
+    fontSize: "medium"
+  },
+  Small: {
+    fontSize: "xx-small"
+  },
+  Georgia: {
+    fontFamily: ["Georgia", "serif"]
+  },
+  Palatino: {
+    fontFamily: ["Palatino Linotype", "Book Antiqua", "Palatino", "serif"]
+  },
+  TimesNewRoman: {
+    fontFamily: ["Times New Roman", "Times", "serif"]
+  },
+  Arial: {
+    fontFamily: ["Arial", "Helvetica", "sans-serif"]
+  },
+  ArialBlack: {
+    fontFamily: ["Arial Black", "Gadget", "sans-serif"]
+  },
+  ComicSans: {
+    fontFamily: ["Comic Sans MS", "cursive", "sans-serif"]
+  },
+  Impact: {
+    fontFamily: ["Impact", "Charcoal", "sans-serif"]
+  },
+  Lucida: {
+    fontFamily: ["Lucida Sans Unicode", "Lucida Grande", "sans-serif"]
+  },
+  Tahoma: {
+    fontFamily: ["Tahoma", "Geneva", "sans-serif"]
+  },
+  Courier: {
+    fontFamily: ["Courier New", "Courier", "monospace"]
   }
 };
 
@@ -14,7 +53,20 @@ const INLINE_STYLES = [
   { label: "Bold", style: "BOLD" },
   { label: "Italic", style: "ITALIC" },
   { label: "Underline", style: "UNDERLINE" },
-  { label: "Strikethrough", style: "STRIKE" }
+  { label: "Strikethrough", style: "STRIKE" },
+  { label: "Huge", style: "Huge" },
+  { label: "Normal", style: "Normal" },
+  { label: "Small", style: "Small" },
+  { label: "Georgia", style: "Georgia" },
+  { label: "Palatino", style: "Palatino" },
+  { label: "TimesNewRoman", style: "TimesNewRoman" },
+  { label: "Arial", style: "Arial" },
+  { label: "ArialBlack", style: "ArialBlack" },
+  { label: "ComicSans", style: "ComicSans" },
+  { label: "Impact", style: "Impact" },
+  { label: "Lucida", style: "Lucida" },
+  { label: "Tahoma", style: "Tahoma" },
+  { label: "Courier", style: "Courier" }
 ];
 
 // Виды блочных стилей
@@ -25,10 +77,7 @@ const BLOCK_STYLES = [
   { label: "aLeft", style: "a-left" },
   { label: "aCenter", style: "a-center" },
   { label: "aRight", style: "a-right" },
-  { label: "aJust", style: "a-just" },
-  { label: "Huge", style: "huge" },
-  { label: "Normal", style: "normal" },
-  { label: "Small", style: "small" }
+  { label: "aJust", style: "a-just" }
 ];
 
 // Кнопка с функцией
@@ -84,12 +133,6 @@ function myBlockStyleFn(contentBlock) {
       return "textAlignRight";
     case "a-just":
       return "textAlignJustify";
-    case "huge":
-      return "hugeFont";
-    case "normal":
-      return "normalFont";
-    case "small":
-      return "smallFont";
     default:
       return;
   }

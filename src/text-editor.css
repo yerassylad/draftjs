@@ -5,9 +5,22 @@
   border-radius: 5px;
 }
 
-.superFancyBlockquote {
-  color: #999;
-  font-family: "Hoefler Text", Georgia, serif;
-  font-style: italic;
+.textIndentation {
+  text-indent: 15%;
+}
+
+.textAlignLeft {
+  text-align: left;
+}
+
+.textAlignCenter {
   text-align: center;
+}
+
+.textAlignRight {
+  text-align: right;
+}
+
+.textAlignJustify {
+  text-align: justify;
 }

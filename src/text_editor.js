@@ -1,14 +1,11 @@
 import React, { Component } from "react";
-import { Editor, EditorState, RichUtils } from "draft-js";
+import { Editor, EditorState, RichUtils, convertToRaw } from "draft-js";
 import "./text-editor.css";
 
 // в darftjs имплементированы BOLD ITALIC UNDERLINE стили. Создаем кастомный стиль для зачеркнутых слов
 const StyleMap = {
   STRIKE: {
     textDecoration: "line-through"
-  },
-  INDENT: {
-    textIndent: "50px"
   }
 };
 
@@ -24,7 +21,11 @@ const INLINE_STYLES = [
 const BLOCK_STYLES = [
   { label: "UL", style: "unordered-list-item" },
   { label: "OL", style: "ordered-list-item" },
-  { label: "Indent", style: "INDENT" }
+  { label: "Indent", style: "indent" },
+  { label: "aLeft", style: "a-left" },
+  { label: "aCenter", style: "a-center" },
+  { label: "aRight", style: "a-right" },
+  { label: "aJust", style: "a-just" }
 ];
 
 // Кнопка с функцией
@@ -67,12 +68,21 @@ const BlockDecorationBtns = props => {
   );
 };
 
-// function myBlockStyleFn(contentBlock) {
-//   const type = contentBlock.getType();
-//   if (type === "blockquote") {
-//     return "superFancyBlockquote";
-//   }
-// }
+function myBlockStyleFn(contentBlock) {
+  const type = contentBlock.getType();
+  switch (type) {
+    case "indent":
+      return "textIndentation";
+    case "a-left":
+      return "textAlignLeft";
+    case "a-center":
+      return "textAlignCenter";
+    case "a-right":
+      return "textAlignRight";
+    case "a-just":
+      return "textAlignJustify";
+  }
+}
 
 // Сам текстовый редактор
 class TextEditor extends Component {
@@ -118,9 +128,12 @@ class TextEditor extends Component {
             onChange={this.onChange}
             placeholder="Введите текст"
             ref="Текстовый редактор"
-            // blockStyleFn={myBlockStyleFn}
+            blockStyleFn={myBlockStyleFn}
           />
         </div>
+        {JSON.stringify(
+          convertToRaw(this.state.editorState.getCurrentContent())
+        )}
       </div>
     );
   }
